@@ -1,0 +1,40 @@
+{
+  "name": "svgo-to-jsx",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "A Plugin that transpiles compressed SVG assets to JSX and outputs a JSX file containing functional components for the selected exports.",
+  "skpm": {
+    "name": "SVGO to JSX",
+    "main": "SVGO to JSX.sketchplugin",
+    "manifest": "src/manifest.json",
+    "appcast": "",
+    "assets": [
+      "assets/**/*"
+    ]
+  },
+  "main": "src/plugin.js",
+  "scripts": {
+    "build": "node ./scripts/build-plugins.js && skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "postinstall": "npm run build && skpm-link",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yash Arora <arorayash.work@gamil.com>",
+  "devDependencies": {
+    "@skpm/builder": "^0.5.10"
+  },
+  "repository": "",
+  "dependencies": {
+    "@skpm/child_process": "^0.2.4",
+    "@skpm/dialog": "^0.2.3",
+    "@skpm/fs": "^0.2.0",
+    "@skpm/path": "^0.1.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "simple-svg-tools": "^1.1.12",
+    "svg-to-jsx": "^1.0.0",
+    "svgjs": "^2.6.2",
+    "svgo": "^1.1.1"
+  }
+}
