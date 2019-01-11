@@ -1,32 +1,3 @@
-# SVGO Compressor
-
-A Plugin that compresses SVG assets using SVGO, right when you export them. This Plugin *requires* Sketch 3.8.
-
-## Install
-
-- Download [SVGO Compressor](https://github.com/BohemianCoding/svgo-compressor/releases/latest) & unzip it.
-- Double click **SVGO Compressor.sketchplugin** to install the Plugin.
-
-## Usage
-
-Selecting menu items or hitting keys is out of fashion, so SVGO Compressor will compress your SVG assets whenever you export them, without you having to do anything.
-
-You’ll get a message on your document window showing some stats about the process to let you know the compression worked as expected.
-
-If you want your SVG assets uncompressed, you can temporarily disable the Plugin by opening Sketch’s **Preferences › Plugins** and unchecking 'SVGO Compressor'. Or you can right-click any layer and select **Copy SVG Code**, and that will give you the original, uncompressed code.
-
-## Editing Settings
-
-If for some reason you’re not happy with the default settings we’ve chosen, you can select **Plugins › SVGO Compressor › About SVGO Compressor** and then click the **Edit SVGO Settings…** button. You default editor will open the `svgo.json` file, where you’ll be able to tweak the settings.
-
-### Top level settings
-
-- `pretty`: Make SVG pretty printed
-- `indent`: Indent number when pretty printing SVGs
-- `multipass`: Run the optimization 10 times
-- `floatPrecision`: The precision of the numbers to use in all the plugins
-- `debug`: Print some logs to help debug the SVGO configuration
-
 ### SVGO Plugins
 
 #### addAttributesToSVGElement
@@ -168,7 +139,7 @@ We work around this issue by adding a prefix for each asset, based on its filena
 
 TODO: send SVGO a pull request to do this on their side, using something like an `autoprefix` param.
 
-TODO: we should do a better job with this in Sketch, since we're basically using `path-X` ourselves, where `X` is a number that starts from 1 for *each* exported asset. We should probably use the path name, or something derived from it.
+TODO: we should do a better job with this in Sketch, since we're basically using `path-X` ourselves, where `X` is a number that starts from 1 for _each_ exported asset. We should probably use the path name, or something derived from it.
 
 #### cleanupListOfValues
 
@@ -230,7 +201,7 @@ Turns this:
 </g>
 ```
 
- into this
+into this
 
 ```xml
  <path attr1="val1" d="..."/>
@@ -592,42 +563,3 @@ On by default in SVGO Compressor.
 Sorts element attributes to improve readability.
 
 On by default in SVGO Compressor.
-
-### Custom SVGO Plugins
-
-__requires Sketch >= 52__
-
-You can specify custom SVGO plugins by giving a relative path to a JS file instead of a name:
-
-```diff
-...
-+ {
-+   "path": "./SVGO-plugins/sRGB-blur.js",
-+   "enabled": true,
-+   "params": {}
-+ }
-```
-
-You can find a list of custom SVGO plugins that the community created:
-- [sRGB-blur](https://gist.github.com/mathieudutour/73309f6fb7fb6e7b830e20e43ee8f850) (see #40)
-- [convertIdToClass](https://gist.github.com/bomberstudios/848827b37bed38ca0aae5fe2bbd0843a)
-
-## Acknowledgements
-
-We would like to thank:
-
-- The [SVGO project](https://github.com/svg/svgo), for creating the golden standard for SVG compression.
-- [Andrey Shakhmin](https://github.com/turbobabr), for his inspiration during the [Hamburg Hackathon](http://designtoolshackday.com), where he showed us how to use node modules inside Sketch.
-
-## Development
-
-This plugin is built using [skpm](https://github.com/skpm/skpm). To build it, just run
-
-```
-npm i
-npm run build
-```
-
-To edit the Plugin's code, edit the code in `src` and run `npm run build` again (or, for the ultimate laziness, run `npm run watch` and it will observe any changes in the files and rebuild the Plugin every time you save them.)
-
-For more details, check the [skpm documentation](https://github.com/skpm/skpm).
